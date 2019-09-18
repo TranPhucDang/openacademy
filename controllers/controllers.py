@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 
-# class QuanLy(http.Controller):
-#     @http.route('/quan_ly/quan_ly/', auth='public')
+# class OpenacademyV2(http.Controller):
+#     @http.route('/openacademy_v2/openacademy_v2/', auth='public')
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/quan_ly/quan_ly/objects/', auth='public')
+#     @http.route('/openacademy_v2/openacademy_v2/objects/', auth='public')
 #     def list(self, **kw):
-#         return http.request.render('quan_ly.listing', {
-#             'root': '/quan_ly/quan_ly',
-#             'objects': http.request.env['quan_ly.quan_ly'].search([]),
+#         return http.request.render('openacademy_v2.listing', {
+#             'root': '/openacademy_v2/openacademy_v2',
+#             'objects': http.request.env['openacademy_v2.openacademy_v2'].search([]),
 #         })
 
-#     @http.route('/quan_ly/quan_ly/objects/<model("quan_ly.quan_ly"):obj>/', auth='public')
+#     @http.route('/openacademy_v2/openacademy_v2/objects/<model("openacademy_v2.openacademy_v2"):obj>/', auth='public')
 #     def object(self, obj, **kw):
-#         return http.request.render('quan_ly.object', {
+#         return http.request.render('openacademy_v2.object', {
 #             'object': obj
 #         })

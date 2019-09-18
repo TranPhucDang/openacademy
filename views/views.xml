@@ -2,9 +2,9 @@
   <data>
     <!-- explicit list view definition -->
     <!--
-    <record model="ir.ui.view" id="quan_ly.list">
-      <field name="name">quan_ly list</field>
-      <field name="model">quan_ly.quan_ly</field>
+    <record model="ir.ui.view" id="openacademy_v2.list">
+      <field name="name">openacademy_v2 list</field>
+      <field name="model">openacademy_v2.openacademy_v2</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
@@ -17,18 +17,18 @@
 
     <!-- actions opening views on models -->
     <!--
-    <record model="ir.actions.act_window" id="quan_ly.action_window">
-      <field name="name">quan_ly window</field>
-      <field name="res_model">quan_ly.quan_ly</field>
+    <record model="ir.actions.act_window" id="openacademy_v2.action_window">
+      <field name="name">openacademy_v2 window</field>
+      <field name="res_model">openacademy_v2.openacademy_v2</field>
       <field name="view_mode">tree,form</field>
     </record>
     -->
 
     <!-- server action to the one above -->
     <!--
-    <record model="ir.actions.server" id="quan_ly.action_server">
-      <field name="name">quan_ly server</field>
-      <field name="model_id" ref="model_quan_ly_quan_ly"/>
+    <record model="ir.actions.server" id="openacademy_v2.action_server">
+      <field name="name">openacademy_v2 server</field>
+      <field name="model_id" ref="model_openacademy_v2_openacademy_v2"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -42,19 +42,19 @@
 
     <!-- Top menu item -->
     <!--
-    <menuitem name="quan_ly" id="quan_ly.menu_root"/>
+    <menuitem name="openacademy_v2" id="openacademy_v2.menu_root"/>
     -->
     <!-- menu categories -->
     <!--
-    <menuitem name="Menu 1" id="quan_ly.menu_1" parent="quan_ly.menu_root"/>
-    <menuitem name="Menu 2" id="quan_ly.menu_2" parent="quan_ly.menu_root"/>
+    <menuitem name="Menu 1" id="openacademy_v2.menu_1" parent="openacademy_v2.menu_root"/>
+    <menuitem name="Menu 2" id="openacademy_v2.menu_2" parent="openacademy_v2.menu_root"/>
     -->
     <!-- actions -->
     <!--
-    <menuitem name="List" id="quan_ly.menu_1_list" parent="quan_ly.menu_1"
-              action="quan_ly.action_window"/>
-    <menuitem name="Server to list" id="quan_ly" parent="quan_ly.menu_2"
-              action="quan_ly.action_server"/>
+    <menuitem name="List" id="openacademy_v2.menu_1_list" parent="openacademy_v2.menu_1"
+              action="openacademy_v2.action_window"/>
+    <menuitem name="Server to list" id="openacademy_v2" parent="openacademy_v2.menu_2"
+              action="openacademy_v2.action_server"/>
     -->
   </data>
 </odoo>
