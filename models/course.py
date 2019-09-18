@@ -45,12 +45,12 @@ class Session(models.Model):
     attendee_ids = fields.Many2many('openacademy_pd.partner_1', string="Attendees")
     # tao lien ket dang on voi model 'openacademy.partner' thong qua thuoc tinh attendee_ids
     seats = fields.Integer()
-
+    taken_seats = fields.Float(compute='_compute_taken_seats', store=True)
     ###
     ## Using computed fields
     ###
     taken_seats = fields.Float(compute='_compute_taken_seats', store=True)
-
+    attendees_count = fields.Integer(compute='_get_attendees_count', store=True)
     @api.depends('seats', 'attendee_ids')
     def _compute_taken_seats(self):
         for session in self:
@@ -86,3 +86,20 @@ class Session(models.Model):
         # possible only if taken_seats is stored
         ('session_full', 'CHECK(taken_seats <= 100)', 'The room is full'),
     ]
+
+    @api.onchange('start_date', 'end_date')
+    def _compute_duration(self):
+        if not (self.start_date and self.end_date):
+            return
+        if self.end_date < self.start_date:
+            return {'warning': {
+                'title':   "Incorrect date value",
+                'message': "End date is earlier then start date",
+            }}
+        delta = fields.Date.from_string(self.end_date) - fields.Date.from_string(self.start_date)
+        self.duration = delta.days + 1
+
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        for session in self:
+            session.attendees_count = len(session.attendee_ids)
