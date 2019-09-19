@@ -3,20 +3,20 @@
     <menuitem
             id="root_menu"
             name="Open Academy"
-            web_icon="openacademy_pd,static/description/icon.png"
+            web_icon="openacademy,static/description/icon.png"
     />
 
     <menuitem
             id="course_menu"
             name="Courses"
-            parent="openacademy_pd.root_menu"
+            parent="openacademy.root_menu"
             sequence="10"
     />
 
     <menuitem
             id="course_menu_action"
             name="Courses"
-            parent="openacademy_pd.course_menu"
+            parent="openacademy.course_menu"
             sequence="10"
             action="course_action"
     />
@@ -24,8 +24,22 @@
     <menuitem
             id="session_menu_action"
             name="Sessions"
-            parent="openacademy_pd.course_menu"
+            parent="openacademy.course_menu"
             sequence="20"
             action="session_action"
+    />
+
+    <menuitem
+            id="configuration_menu"
+            name="Configuration"
+            parent="openacademy.root_menu"
+            sequence="99"
+    />
+    <menuitem
+            id="partner_menu_action"
+            name="Contacts"
+            parent="openacademy.configuration_menu"
+            sequence="10"
+            action="partner_action"
     />
 </odoo>
