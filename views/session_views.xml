@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--    khoi tao tree view dua vao ir.ui.view cua odoo voi id-->
     <record id="session_view_list" model="ir.ui.view">
+<!--        dinh danh dua vao name-->
         <field name="name">openacademy.session.list</field>
+<!--        tro view den model openacademy.session, gia tri cua field nay duoc xac dinh trong thuoc tinh _name cua model-->
         <field name="model">openacademy.session</field>
+<!--        cau truc view se hien thi dua vao field arch cua ir.ui.view,  cau truc theo xml giong voi html-->
         <field name="arch" type="xml">
+<!--            the hien cac nhom dua vao mau sac tren view-->
             <tree decoration-bf="(taken_seats &gt; 70)"
                   decoration-warning="duration &lt; 5"
                   decoration-danger="duration&gt;15"
                   default_order="start_date">
+<!--                the hien cac field cau tree-->
                 <field name="name"/>
                 <field name="course_id"/>
                 <field name="instructor_id"/>
                 <field name="start_date"/>
                 <field name="duration"/>
                 <field name="seats"/>
+<!--                hien thi dang progress (dang thanh trang thai)-->
                 <field name="taken_seats" widget="progressbar"/>
                 <field name="attendees_count"/>
             </tree>
         </field>
     </record>
-
+<!--khoi tao  view dua vao ir.ui.view cua odoo voi id-->
     <record id="session_view_form" model="ir.ui.view">
+<!--        dinh danh view dua vao name-->
         <field name="name">openacademy.session.form</field>
+<!--        tro den model openacademy.session, gia tri cua name duoc xac dinh dua vao _name cau model -->
         <field name="model">openacademy.session</field>
+<!--         cau truc view se hien thi dua vao field arch cua ir.ui.view,  cau truc theo xml giong voi html-->
         <field name="arch" type="xml">
             <form>
+<!--                chia from view thanh cac phan rieng biet-->
                 <sheet>
+<!--                    nhom (1) va (2)-->
                     <group>
+<!--                        nhom cac field name,...,active  (1)-->
                         <group>
                             <field name="name"/>
                             <field name="course_id"/>
                             <field name="responsible_id"/>
                             <field name="level"/>
+<!--                            ?????????????????????????????????????????-->
                             <field name="instructor_id" domain="[('instructor', '=', True)]"/>
                             <field name="active"/>
                         </group>
+<!--                        nhom cac nhom start_date,..., taken_seats (2)-->
                         <group>
                             <field name="start_date"/>
                             <field name="end_date"/>
@@ -43,13 +58,16 @@
                             <field name="taken_seats" widget="progressbar"/>
                         </group>
                     </group>
+<!--                    phan 2 cau sheet-->
+<!--                    tao lable giong danh sach dua vao field attendee_ids-->
                     <label for="attendee_ids"/>
                     <field name="attendee_ids"/>
                 </sheet>
             </form>
         </field>
     </record>
-
+<!--the hien view tinh toan tong hop tu bang du lieu-->
+<!--    cac khai bao cung tuong tu nhu form view va tree view-->
     <record id="session_view_pivot" model="ir.ui.view">
         <field name="name">openacademy.session.pivot</field>
         <field name="model">openacademy.session</field>
@@ -60,7 +78,7 @@
             </pivot>
         </field>
     </record>
-
+<!--tao va khai bao cac action -->
     <record id="session_action" model="ir.actions.act_window">
         <field name="name">Sessions</field>
         <field name="res_model">openacademy.session</field>

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!--    khoi tao tree view dua vao ir.ui.view cua odoo-->
     <record id="course_view_list" model="ir.ui.view">
+<!-- dinh danh dua vao field name-->
         <field name="name">openacademy.course.tree</field>
+<!--        tro view den model openacademy.course, gia tri cua field nay duoc xac dinh trong thuoc tinh _name cua model -->
         <field name="model">openacademy.course</field>
+<!--        cau truc view se hien thi dua vao field arch cua ir.ui.view,  cau truc theo xml giong voi html-->
         <field name="arch" type="xml">
+<!--            cau truc cua tree view -->
             <tree>
+<!--                tro den cac field name, reponsible_id, level cau model openacademy de the hien len view thong qua field name cau view-->
                 <field name="name"/>
                 <field name="responsible_id"/>
                 <field name="level"/>
@@ -12,23 +18,37 @@
         </field>
     </record>
 
+<!--    khoi tao from view dua vao model ir.ui.view cau odoo-->
     <record id="course_view_form" model="ir.ui.view">
+<!--        name duoc su dung de dinh danh  mot view moi-->
         <field name="name">openacademy.course.form</field>
+<!--        tro view den model openacademy.course, gia tri cua field nay duoc xac dinh trong thuoc tinh _name cua model-->
         <field name="model">openacademy.course</field>
+<!--        cau truc view se hien thi dua vao field arch cua ir.ui.view,  cau truc theo xml giong voi html-->
         <field name="arch" type="xml">
             <form>
+<!--                chia from view thanh 2 phan rieng biet -->
                 <sheet>
+<!--                  gop name,responsible_id, level thanh 1 nhom (phan 1) -->
                     <group>
                         <field name="name"/>
                         <field name="responsible_id"/>
                         <field name="level"/>
                     </group>
+<!--                    phan 2 cua sheet-->
+<!--                    the hien du leu gom 2 tag la field description, session   -->
                     <notebook>
+<!--                    the hien field description  voi ten la Description va sort theo thu tu giam dan dua vao name -->
                         <page string="Description" name="desc">
                             <field name="description"/>
                         </page>
+<!--                        the hien du lieu cau field sessions-->
+<!--                        dinh dang model sessions, the hien len view voi ten la Sessions-->
                         <page string="Sessions" name="sessions">
+<!--                            tro den cac record thong qua field session_ids-->
                             <field name="session_ids">
+<!--                                the hien cac record duoi dang tree view -->
+<!--                                cau truc tree view: name,....,seats va cho phep chinh sua -->
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="instructor_id"/>
@@ -43,10 +63,14 @@
             </form>
         </field>
     </record>
-
+<!--tao action dua vao model ir.actions.act_window, action duoc dinh danh bang id-->
     <record id="course_action" model="ir.actions.act_window">
+<!--       cau truc caua action: -->
+<!--        thuc tinh name de hien thi tieu de-->
         <field name="name">Courses</field>
+<!--        action tro den model openacademy.course thong qua res_model-->
         <field name="res_model">openacademy.course</field>
+<!--        action se tro den lan luoc la tree view va from view-->
         <field name="view_mode">tree,form</field>
     </record>
 </odoo>
