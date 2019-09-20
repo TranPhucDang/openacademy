@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!--    tao cac menu-->
+<!--    menu goc la co ten la Open Academy-->
     <menuitem
             id="root_menu"
             name="Open Academy"
             web_icon="openacademy,static/description/icon.png"
     />
-
+<!--tao menu Coures la con cua menu goc-->
     <menuitem
             id="course_menu"
             name="Courses"
             parent="openacademy.root_menu"
             sequence="10"
     />
-
+<!--tao menu Courses la con cua Courses-->
     <menuitem
             id="course_menu_action"
             name="Courses"
@@ -20,7 +22,7 @@
             sequence="10"
             action="course_action"
     />
-
+<!--tao menu Sessions la con cua Courses-->
     <menuitem
             id="session_menu_action"
             name="Sessions"
@@ -28,13 +30,14 @@
             sequence="20"
             action="session_action"
     />
-
+<!--menu Configuration la con cua root menu Open Academy-->
     <menuitem
             id="configuration_menu"
             name="Configuration"
             parent="openacademy.root_menu"
             sequence="99"
     />
+<!--    menu Contacts la con cua Configuration-->
     <menuitem
             id="partner_menu_action"
             name="Contacts"
@@ -43,3 +46,10 @@
             action="partner_action"
     />
 </odoo>
+<!--
+Courses
+    Courses
+    Sessions
+Configuration
+    Contacts
+-->

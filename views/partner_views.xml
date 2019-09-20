@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+<!--    khoi tao tree view  dua tren model ir.ui.view cua odoo-->
     <record id="partner_view_tree" model="ir.ui.view">
         <field name="name">openacademy.partner.tree</field>
         <field name="model">res.partner</field>
+<!-- ???????????????????????????       -->
         <field eval="8" name="priority"/>
         <field name="arch" type="xml">
+<!--            hien thi menu voi ten la Contacts-->
             <tree string="Contacts">
+<!--                hien thi cau truc cua tree view-->
+<!--                cac truong hien thi: display_name, phone,email-->
+<!--                an cac truong: function, user_id,...,active-->
                 <field name="display_name" string="Name"/>
                 <field name="function" invisible="1"/>
                 <field name="phone"/>
@@ -15,30 +21,38 @@
                 <field name="country_id" invisible="1"/>
                 <field name="parent_id" invisible="1"/>
                 <field name="active" invisible="1"/>
+<!--                gia tri cua invisible: 1= true, 0=false-->
             </tree>
         </field>
     </record>
-
+<!--khoi tao form view dua tren model ir.ui.view cua odoo voi id-->
     <record id="partner_view_form" model="ir.ui.view">
         <field name="name">openacadmey.partner.form</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
+<!--            -->
             <form string="Contact">
                 <field name="is_company" invisible="1"/>
                 <field name="type" invisible="1"/>
+<!--                tao mot doi tuong view de tuy chinh: tao them hinh annh, chinh sua vi tri the hien-->
+<!--                ???????-->
                 <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+<!--                khai bao class vua tao-->
                 <div class="oe_title">
                     <field name="company_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio"/>
                     <h1>
                         <field name="name" default_focus="1" placeholder="Name"
                                attrs="{'required' : [('type', '=', 'contact')]}"/>
                     </h1>
+<!--                    khai bao tao field hien thi cac lien ket voi cac record khac neu company==true-->
                     <field name="parent_id"
                            placeholder="Company"
                            domain="[('is_company', '=', True)]" context="{'default_is_company': True}"
                            attrs="{'invisible': [('is_company','=', True)]}"/>
                 </div>
+<!--                nhom cac truong lai-->
                 <group>
+<!--                    placeholder: tao vi du cho nguoi nhap-->
                     <field name="function" placeholder="e.g. Sales Director"/>
                     <field name="user_ids" invisible="1"/>
                     <field name="email" widget="email" required="context.get('force_email', False)"
@@ -51,12 +65,13 @@
             </form>
         </field>
     </record>
-
+<!--khai bao va tao search view-->
     <record id="partner_view_search" model="ir.ui.view">
         <field name="name">openacademy.partner.search</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
             <search string="Search Partner">
+<!--                tao cac filter cho search-->
                 <field name="display_name"
                        filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
                 <separator/>
@@ -68,7 +83,7 @@
             </search>
         </field>
     </record>
-
+<!--khai bao cac action -->
     <record id="partner_action" model="ir.actions.act_window">
         <field name="name">Contacts</field>
         <field name="res_model">res.partner</field>
